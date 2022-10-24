@@ -9,6 +9,7 @@ import altair as alt
 st.title("The Evolution of Basketball!")
 
 st.write("This tool will allow you to...")
+st.write("Analyze how the game of basketball has changed in the past 25 years...")
 st.write("Find out each teams strength and weaknesses!")
 st.write('\n')
 st.write("Develop a strategy, and...")
@@ -58,8 +59,18 @@ if uploaded_file is not None:
 
     st.write(c)
 
-    st.write("Based on past game data, how many three pointers do the Spurs need to make to have a good chance of beating the Miami Heat?")
+    st.write("Based on past game data, what is the win percentage for each team if they make 10 three pointers")
 
+    labels = 'Spurs', 'Heat'
+    sizes = [74, 26]
+    explode = (0, 0.1)  # only "explode" the 2nd slice (i.e. 'Hogs')
+
+    fig1, ax1 = plt.subplots()
+    ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
+        shadow=True, startangle=90)
+    ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+
+    st.pyplot(fig1)
     # fig, ax = plt.subplots()
     # df.hist(
     #     bins=8,
